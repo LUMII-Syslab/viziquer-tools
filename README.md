@@ -2,12 +2,17 @@
 
 This repository contains scripts and initial data for starting your own copy of ViziQuer Tools as a set of interlinked containers.
 
-This repository is just a glue + initial data; the tools themselves come from the following repositories:
+This repository is an integrator module + initial data; the tools themselves come from the following repositories:
 - [ViziQuer](https://github.com/LUMII-Syslab/viziquer)
 - [Data Shape Server](https://github.com/LUMII-Syslab/data-shape-server)
-- [OBIS-SchemaExtractor](https://github.com/LUMII-Syslab/OBIS-SchemaExtractor)
+- Upcoming: [OBIS-SchemaExtractor](https://github.com/LUMII-Syslab/OBIS-SchemaExtractor)
 
 For more information on the ViziQuer tools family, please visit [viziquer.lumii.lv](https://viziquer.lumii.lv/).
+
+## Acknowledgement
+
+The repository has been developed at Institute of Mathematics and Computer Science, University of Latvia, https://lumii.lv, 
+with support from Latvian Science Council grant lzp-2021/1-0389 "Visual Queries in Distributed Knowledge Graphs" (2022-2024).
 
 ## Requirements
 
@@ -66,7 +71,7 @@ To add a schema for another endpoint, whether public or your own, follow these t
 - extract the schema from the endpoint
 - import the schema into ViziQuer Tools
 
-Note: these steps will be automated in one of the next releases.
+Note: it is planned to automate these steps in some of the next releases.
 
 Alternatively, existing schemas (e.g., created on other servers) can be uploaded.
 
@@ -84,7 +89,8 @@ from the Data Shape Server repository.
 ### Data schema uploading
 
 An existing SQL database schema script (like the ones in `./db/init/pg` directory) can be executed against the database instance to create a new schema. 
-Manual updates of tables `schemata` and `endpoints` in the `public` schema are needed to make this information accessible from the visual environment.
+Manual updates of tables `schemata` and `endpoints` in the `public` schema are needed to make this information accessible from the visual environment
+(auto-update of these tables is performed for schemas loaded during the fresh start (restart from scratch) of the system).
 
 ## (Re)starting from scratch
 
@@ -103,6 +109,11 @@ docker-compose down
 rm -rf db/pg
 docker-compose up -d
 ```
+
+(Re)starting from scratch can be used also for auto-uploading of schema scripts created elsewhere. 
+For that, place the schema scripts in the `./db/init/pg` folder before the fresh start of the system 
+(please prefix the script file names by a unique 2-digit number, less than 99, followed by `_`, as, e.g., `07_`).
+
 
 ## Updating components
 
