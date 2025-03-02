@@ -11,7 +11,7 @@ For more information on the ViziQuer tools family, please visit [viziquer.lumii.
 
 ## Acknowledgement
 
-The repository has been developed at Institute of Mathematics and Computer Science, University of Latvia, https://lumii.lv, 
+The repository has been developed at [Institute of Mathematics and Computer Science, University of Latvia](https://lumii.lv), 
 with support from Latvian Science Council grant lzp-2021/1-0389 "Visual Queries in Distributed Knowledge Graphs" (2022-2024).
 
 ## Requirements
